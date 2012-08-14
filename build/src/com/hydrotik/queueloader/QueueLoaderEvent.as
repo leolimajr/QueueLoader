@@ -112,5 +112,27 @@ package com.hydrotik.queueloader {
 			this.bmArray = (currItem.bmArray == null) ? null : currItem.bmArray;
 			this.info = (currItem.info == null) ? null : currItem.info;
 		}
+
+		public override function clone() : Event{
+			
+			var currItem:Object = {
+				container : this.container,
+					target : this.targ,
+					content : this.content,
+					path : this.path,
+					title : this.title,
+					fileType : this.fileType,
+					bytesLoaded : this.bytesLoaded,
+					bytesTotal : this.bytesTotal,
+					progress : this.percentage,
+					width : this.width,
+					height : this.height,
+					message : this.message,
+					bmArray : this.bmArray,
+					info : this.info		
+			};
+			
+			return new QueueLoaderEvent(this.type, currItem, this.queuepercentage, this.index, this.length, this.bandwidth, this.queueBytes, this.bubbles, this.cancelable);
+		}
 	}
 }
